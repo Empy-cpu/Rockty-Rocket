@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 851957074}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Untagged
+  m_TagString: obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -449,6 +449,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 437793796810140711, guid: 997f19e8f0901844fbcaa9ef3da11121, type: 3}
+      propertyPath: m_TagString
+      value: obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 997f19e8f0901844fbcaa9ef3da11121, type: 3}
 --- !u!1001 &4737012856459976214
@@ -505,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 4737012855781213157, guid: 248010e690d232046bf1b65e414d9fe0, type: 3}
       propertyPath: m_Name
       value: Rocket
+      objectReference: {fileID: 0}
+    - target: {fileID: 4737012855781213157, guid: 248010e690d232046bf1b65e414d9fe0, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 248010e690d232046bf1b65e414d9fe0, type: 3}
@@ -609,6 +617,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4737012856459976217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737012856459976215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af8a6af40d94eb419b3dbb78d24719d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5457769285353989682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,6 +684,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LauncPad
       objectReference: {fileID: 0}
+    - target: {fileID: 5457769284863565549, guid: b3cf37673042ae34193c7e864719348c, type: 3}
+      propertyPath: m_TagString
+      value: Friendly
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3cf37673042ae34193c7e864719348c, type: 3}
 --- !u!1001 &8992761517053584050
@@ -676,6 +700,10 @@ PrefabInstance:
     - target: {fileID: 8992761517332239979, guid: 8a15e160a420d294182db52f1eb148fe, type: 3}
       propertyPath: m_Name
       value: LandingPad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992761517332239979, guid: 8a15e160a420d294182db52f1eb148fe, type: 3}
+      propertyPath: m_TagString
+      value: Finish
       objectReference: {fileID: 0}
     - target: {fileID: 8992761517332239983, guid: 8a15e160a420d294182db52f1eb148fe, type: 3}
       propertyPath: m_RootOrder
