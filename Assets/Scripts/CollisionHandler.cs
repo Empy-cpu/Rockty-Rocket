@@ -6,8 +6,19 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float waitTime=3f;
+    [SerializeField] AudioClip Landing;
+     [SerializeField] AudioClip Crash;
+    AudioSource audioSource;
+
+    bool isTransitioning;
+
+    void Start()
+    {
+       audioSource=GetComponent<AudioSource>();
+    }
     void OnCollisionEnter(Collision other)
     {
+        if(isTransitioning){return;}
         switch(other.gameObject.tag)
         {
             case "friendly":
@@ -16,12 +27,11 @@ public class CollisionHandler : MonoBehaviour
 
             case "obstacle":
             Debug.Log("You blew up");
-            Invoke("startCrashSequence",waitTime);
-           
+            Invoke("startCrashSequence",waitTime);  
             break;
 
             case "Finish":
-            Debug.Log("hurray! next level");
+            Debug.Log("hurray! next level");  
             Invoke("winSequence",waitTime);
             break;
 
@@ -32,13 +42,19 @@ public class CollisionHandler : MonoBehaviour
     }
     void startCrashSequence()
     {
+        isTransitioning=true;
+        audioSource.Stop();
         GetComponent<Movement>().enabled=false;
+        audioSource.PlayOneShot(Crash);
         ReloadLevel();
     }
 
     void winSequence()
     {
+        isTransitioning=true;
+        audioSource.Stop();
         GetComponent<Movement>().enabled=false;
+        audioSource.PlayOneShot(Landing);
         nextLevel();
     }
 
