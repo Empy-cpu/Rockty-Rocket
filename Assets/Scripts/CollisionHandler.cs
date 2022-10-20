@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    
+    [SerializeField] float waitTime=3f;
     void OnCollisionEnter(Collision other)
     {
         switch(other.gameObject.tag)
@@ -16,13 +16,13 @@ public class CollisionHandler : MonoBehaviour
 
             case "obstacle":
             Debug.Log("You blew up");
-            Invoke("startCrashSequence",3f);
+            Invoke("startCrashSequence",waitTime);
            
             break;
 
             case "Finish":
             Debug.Log("hurray! next level");
-            nextLevel();
+            Invoke("winSequence",waitTime);
             break;
 
             default:
@@ -35,6 +35,13 @@ public class CollisionHandler : MonoBehaviour
         GetComponent<Movement>().enabled=false;
         ReloadLevel();
     }
+
+    void winSequence()
+    {
+        GetComponent<Movement>().enabled=false;
+        nextLevel();
+    }
+
     void ReloadLevel()
     {
         int currentSceneIndex=SceneManager.GetActiveScene().buildIndex;
@@ -49,7 +56,7 @@ public class CollisionHandler : MonoBehaviour
         {
             nextScene=0;
         }
-        SceneManager.LoadScene(currentIndex);
+        SceneManager.LoadScene(nextScene);
     }
     
 }
