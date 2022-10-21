@@ -12,14 +12,33 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning;
+    bool CollisionDisabled=false;
 
     void Start()
     {
        audioSource=GetComponent<AudioSource>();
     }
+
+    void Update()
+    {
+        DebugKeys();
+    }
+
+    void DebugKeys()
+    {
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            nextLevel();
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            CollisionDisabled=!CollisionDisabled;
+        }
+    }
     void OnCollisionEnter(Collision other)
     {
-        if(isTransitioning){return;}
+        if(isTransitioning||CollisionDisabled){return;}
+        
         switch(other.gameObject.tag)
         {
             case "friendly":
@@ -57,7 +76,7 @@ public class CollisionHandler : MonoBehaviour
     {
         isTransitioning=true;
         audioSource.PlayOneShot(Landing);
-        //Invoke("nextLevel",waitTime);
+        Invoke("nextLevel",waitTime);
         GetComponent<Movement>().enabled=false;
        
     }
@@ -68,7 +87,7 @@ public class CollisionHandler : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-   /* void nextLevel()
+    void nextLevel()
     {
         int currentIndex=SceneManager.GetActiveScene().buildIndex;
         int nextScene=currentIndex+1;
@@ -77,6 +96,6 @@ public class CollisionHandler : MonoBehaviour
             nextScene=0;
         }
         SceneManager.LoadScene(nextScene);
-    }*/
+    }
     
 }

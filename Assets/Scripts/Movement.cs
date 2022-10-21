@@ -67,14 +67,23 @@ public class Movement : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.D))
         {
-           ApplyRotation(rotate);
-           
+            RotateRight();
+
         }
         else if(Input.GetKey(KeyCode.A))
         {
-           ApplyRotation(-rotate);
-               
+            RotateLeft();
+
         }
+    }
+
+    private void RotateRight()
+    {
+        ApplyRotation(rotate);
+    }
+    private void RotateLeft()
+    {
+        ApplyRotation(-rotate);
     }
 
     void ApplyRotation(float rotateThrust)

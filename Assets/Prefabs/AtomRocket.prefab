@@ -428,7 +428,7 @@ MonoBehaviour:
   waitTime: 3
   Landing: {fileID: 8300000, guid: 53091975e2300a64f9c5f09d10fff1de, type: 3}
   Crash: {fileID: 8300000, guid: 36de9e6d96109014697184dad5805428, type: 3}
-  PCrash: {fileID: 0}
+  PCrash: {fileID: 198000012942003240, guid: ecdd96beb7f93494880c052dfccf9dc1, type: 3}
 --- !u!114 &1717012128813098147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,9 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainEngine: {fileID: 8300000, guid: bd06851585c8a164c96e1fbf504af3d7, type: 3}
-  PThrust: {fileID: 0}
-  PThrustRight: {fileID: 0}
-  PThrustLeft: {fileID: 0}
+  PThrust: {fileID: 4853252551988342818, guid: 618103212003c594a8513684ee8347e0, type: 3}
   thrust: 999
   rotate: 100
 --- !u!1 &1717012128813064759
