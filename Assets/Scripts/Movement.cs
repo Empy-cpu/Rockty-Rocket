@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour
     {
        rb=GetComponent<Rigidbody>();
        audioSource=GetComponent<AudioSource>();
+       Debug.Log("cheng");
     }
 
     // Update is called once per frame
