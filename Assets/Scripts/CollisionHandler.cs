@@ -7,7 +7,10 @@ public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] float waitTime=3f;
     [SerializeField] AudioClip Landing;
-     [SerializeField] AudioClip Crash;
+    [SerializeField] AudioClip Crash;
+
+    [SerializeField] ParticleSystem PLanding;
+    [SerializeField] ParticleSystem PCrash;
     AudioSource audioSource;
 
     bool isTransitioning;
@@ -27,12 +30,14 @@ public class CollisionHandler : MonoBehaviour
 
             case "obstacle":
             Debug.Log("You blew up");
-            Invoke("startCrashSequence",waitTime);  
+            startCrashSequence();
+            
             break;
 
             case "Finish":
-            Debug.Log("hurray! next level");  
-            Invoke("winSequence",waitTime);
+            Debug.Log("hurray! next level"); 
+            //nextLevel();
+           
             break;
 
             default:
@@ -43,19 +48,21 @@ public class CollisionHandler : MonoBehaviour
     void startCrashSequence()
     {
         isTransitioning=true;
-        audioSource.Stop();
-        GetComponent<Movement>().enabled=false;
         audioSource.PlayOneShot(Crash);
-        ReloadLevel();
+        PCrash.Play();
+        GetComponent<Movement>().enabled=false;
+        Invoke("ReloadLevel",waitTime);  
+       
     }
 
     void winSequence()
     {
         isTransitioning=true;
-        audioSource.Stop();
-        GetComponent<Movement>().enabled=false;
+        PLanding.Play();
         audioSource.PlayOneShot(Landing);
-        nextLevel();
+        //Invoke("nextLevel",waitTime);
+        GetComponent<Movement>().enabled=false;
+       
     }
 
     void ReloadLevel()
@@ -64,7 +71,7 @@ public class CollisionHandler : MonoBehaviour
         SceneManager.LoadScene(currentSceneIndex);
     }
 
-    void nextLevel()
+   /* void nextLevel()
     {
         int currentIndex=SceneManager.GetActiveScene().buildIndex;
         int nextScene=currentIndex+1;
@@ -73,6 +80,6 @@ public class CollisionHandler : MonoBehaviour
             nextScene=0;
         }
         SceneManager.LoadScene(nextScene);
-    }
+    }*/
     
 }
