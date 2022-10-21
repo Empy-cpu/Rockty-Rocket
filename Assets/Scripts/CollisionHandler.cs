@@ -8,8 +8,6 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float waitTime=3f;
     [SerializeField] AudioClip Landing;
     [SerializeField] AudioClip Crash;
-
-    [SerializeField] ParticleSystem PLanding;
     [SerializeField] ParticleSystem PCrash;
     AudioSource audioSource;
 
@@ -58,7 +56,6 @@ public class CollisionHandler : MonoBehaviour
     void winSequence()
     {
         isTransitioning=true;
-        PLanding.Play();
         audioSource.PlayOneShot(Landing);
         //Invoke("nextLevel",waitTime);
         GetComponent<Movement>().enabled=false;
