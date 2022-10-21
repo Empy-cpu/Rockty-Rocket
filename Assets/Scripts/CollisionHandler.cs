@@ -38,7 +38,7 @@ public class CollisionHandler : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if(isTransitioning||CollisionDisabled){return;}
-        
+
         switch(other.gameObject.tag)
         {
             case "friendly":
@@ -53,7 +53,7 @@ public class CollisionHandler : MonoBehaviour
 
             case "Finish":
             Debug.Log("hurray! next level"); 
-            //nextLevel();
+            winSequence();
            
             break;
 
